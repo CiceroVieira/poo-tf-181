@@ -6,6 +6,12 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 
+
+// LENDO ARQUIVOS FONTE - https://stackoverflow.com/questions/29178258/using-hashset-to-store-a-text-file-and-read-from-it
+
+// USANDO HASH SET
+
+
 public class App {
 
 	public static void main(String[] args) {
@@ -23,6 +29,9 @@ public class App {
         for(CiaAerea cia: todasCias)
             System.out.println(cia.getCodigo()+" - "+cia.getNome());
 
+
+        System.out.println("TERMINA DE LER TODAS AS COMPANIAS ////////////////////////////");
+
 		/*
 		gerCias.adicionar(new CiaAerea("JJ", "LATAM Linhas Aéreas"));
 		gerCias.adicionar(new CiaAerea("G3", "Gol Linhas Aéreas S/A"));
@@ -32,10 +41,16 @@ public class App {
 
 		GerenciadorAeronaves gerAvioes = new GerenciadorAeronaves();
 
-		gerAvioes.adicionar(new Aeronave("733", "Boeing 737-300", 140));
-		gerAvioes.adicionar(new Aeronave("73G", "Boeing 737-400", 126));
-		gerAvioes.adicionar(new Aeronave("380", "Airbus Industrie A380", 644));
-		gerAvioes.adicionar(new Aeronave("764", "Boeing 767-400", 304));
+		try{
+            gerAvioes.carregaDados("");
+        }catch (){
+
+        }
+
+//		gerAvioes.adicionar(new Aeronave("733", "Boeing 737-300", 140));
+//		gerAvioes.adicionar(new Aeronave("73G", "Boeing 737-400", 126));
+//		gerAvioes.adicionar(new Aeronave("380", "Airbus Industrie A380", 644));
+//		gerAvioes.adicionar(new Aeronave("764", "Boeing 767-400", 304));
 		gerAvioes.ordenarDescricao();
 //        gerAvioes.ordenarCodigo();
         // Listando em ordem alfabética de descrição:
