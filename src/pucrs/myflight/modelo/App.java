@@ -42,9 +42,9 @@ public class App {
 		GerenciadorAeronaves gerAvioes = new GerenciadorAeronaves();
 
 		try{
-            gerAvioes.carregaDados("");
-        }catch (){
-
+            gerAvioes.carregaDados("equipment.dat");
+        }catch (IOException e){
+            System.out.println("Não foi possível ler equipment.dat");
         }
 
 //		gerAvioes.adicionar(new Aeronave("733", "Boeing 737-300", 140));
@@ -59,22 +59,26 @@ public class App {
             System.out.println(av);
         System.out.println();
 
+        System.out.println("TERMINA DE LER TODAS AS AERONAVES ////////////////////////////");
+
         GerenciadorAeroportos gerAero = new GerenciadorAeroportos();
 
-		gerAero.adicionar(new Aeroporto("POA", "Salgado Filho Intl",
-                new Geo(-29.9939, -51.1711)));
-		gerAero.adicionar(new Aeroporto("GRU", "São Paulo Guarulhos Intl",
-                new Geo(-23.4356, -46.4731)));
-		gerAero.adicionar(new Aeroporto("LIS", "Lisbon",
-                new Geo(38.7742, -9.1342)));
-		gerAero.adicionar(new Aeroporto("MIA", "Miami Intl Airport",
-                new Geo(25.7933, -80.2906)));
+//		gerAero.adicionar(new Aeroporto("POA", "Salgado Filho Intl",
+//                new Geo(-29.9939, -51.1711)));
+//		gerAero.adicionar(new Aeroporto("GRU", "São Paulo Guarulhos Intl",
+//                new Geo(-23.4356, -46.4731)));
+//		gerAero.adicionar(new Aeroporto("LIS", "Lisbon",
+//                new Geo(38.7742, -9.1342)));
+//		gerAero.adicionar(new Aeroporto("MIA", "Miami Intl Airport",
+//                new Geo(25.7933, -80.2906)));
 		gerAero.ordenarNomes();
 
         System.out.println("\nAeroportos ordenados por nome:\n");
         for(Aeroporto a: gerAero.listarTodos())
             System.out.println(a);
         System.out.println();
+
+        System.out.println("TERMINA DE LER TODOS OS AEROPORTOS ////////////////////////////");
 
 		// Para facilitar a criação de rotas:
 
@@ -100,22 +104,24 @@ public class App {
 
 		GerenciadorRotas gerRotas = new GerenciadorRotas();
 
-		Rota poagru = new Rota(latam, poa, gru, b733);
-        Rota grupoa = new Rota(latam, gru, poa, b733);
-        Rota grumia = new Rota(tap, gru, mia, a380);
-        Rota grulis = new Rota(tap, gru, lis, a380);
-
-        gerRotas.adicionar(grumia);
-        gerRotas.adicionar(grulis);
-		gerRotas.adicionar(poagru);
-		gerRotas.adicionar(grupoa);
-//		gerRotas.ordenarCias();
+//		Rota poagru = new Rota(latam, poa, gru, b733);
+//        Rota grupoa = new Rota(latam, gru, poa, b733);
+//        Rota grumia = new Rota(tap, gru, mia, a380);
+//        Rota grulis = new Rota(tap, gru, lis, a380);
+//
+//        gerRotas.adicionar(grumia);
+//        gerRotas.adicionar(grulis);
+//		gerRotas.adicionar(poagru);
+//		gerRotas.adicionar(grupoa);
+		gerRotas.ordenarCias();
 		gerRotas.ordenarNomesAeroportosCias();
 
         System.out.println("\nRotas ordenadas:\n");
         for(Rota r: gerRotas.listarTodas())
             System.out.println(r);
         System.out.println();
+
+        System.out.println("TERMINA DE LER TODAS AS ROTAS ////////////////////////////");
 
 		LocalDateTime manhacedo = LocalDateTime.of(2018, 3, 29, 8, 0);
         LocalDateTime manhameio = LocalDateTime.of(2018, 4, 4, 10, 0);
@@ -128,24 +134,24 @@ public class App {
 
         GerenciadorVoos gerVoos = new GerenciadorVoos();
 
-        gerVoos.adicionar(new Voo(poagru, curto)); // agora!
-        gerVoos.adicionar(new Voo(grulis, tardecedo, longo2));
-        gerVoos.adicionar(new Voo(grulis, tardetarde, longo2));
-        gerVoos.adicionar(new Voo(poagru, manhacedo, curto));
-        gerVoos.adicionar(new Voo(grupoa, manhameio, curto));
-        gerVoos.adicionar(new Voo(grumia, manhacedo, longo1));
+//        gerVoos.adicionar(new Voo(poagru, curto)); // agora!
+//        gerVoos.adicionar(new Voo(grulis, tardecedo, longo2));
+//        gerVoos.adicionar(new Voo(grulis, tardetarde, longo2));
+//        gerVoos.adicionar(new Voo(poagru, manhacedo, curto));
+//        gerVoos.adicionar(new Voo(grupoa, manhameio, curto));
+//        gerVoos.adicionar(new Voo(grumia, manhacedo, longo1));
 
         // Vôo com várias escalas
-        VooEscalas vooEsc = new VooEscalas(poagru,
-            manhacedo, longo2);
-        vooEsc.adicionarRota(grulis);
+//        VooEscalas vooEsc = new VooEscalas(poagru,
+//            manhacedo, longo2);
+//        vooEsc.adicionarRota(grulis);
 
-        gerVoos.adicionar(vooEsc);
+//        gerVoos.adicionar(vooEsc);
 
         // O toString vai usar o método implementado
         // em VooEscalas, mas reutilizando (reuso) o método
         // original de Voo
-        System.out.println(vooEsc.toString());
+//        System.out.println(vooEsc.toString());
 
 //        gerVoos.ordenarDataHoraDuracao();
         gerVoos.ordenarDataHoraDuracao();

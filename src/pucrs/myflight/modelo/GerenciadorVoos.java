@@ -1,10 +1,16 @@
 package pucrs.myflight.modelo;
 
+import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.Period;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Scanner;
 
 public class GerenciadorVoos {
 
@@ -31,6 +37,36 @@ public class GerenciadorVoos {
     public ArrayList<Voo> listarTodos() {
         return new ArrayList<>(voos);
     }
+
+
+//    public void carregaDados(String nomeArq) throws IOException {
+//        Path path = Paths.get(nomeArq);
+//        try (Scanner sc = new Scanner(Files.newBufferedReader(path, Charset.forName("utf8")))) {
+//            sc.useDelimiter("[;\n]"); // separadores: ; e nova linha
+//            String header = sc.nextLine(); // pula cabeçalho
+//            String cod, nome, desc;
+//            int cap;
+//            double lat = 0;
+//            double longit = 0;
+//
+//            while (sc.hasNext()) {
+//                cod = sc.next();
+//                nome = sc.next();
+//                desc = sc.next();
+//                cap = sc.nextInt();
+//                lat = sc.nextDouble();
+//                longit = sc.nextDouble();
+//                Geo geo = new Geo(lat, longit);
+//                Aeroporto aeroDestino = new Aeroporto(cod, nome, geo);
+//                Aeroporto aeroOrigem = new Aeroporto(cod, nome, geo);
+//                CiaAerea ciaAerea = new CiaAerea(cod, nome);
+//                Aeronave aero = new Aeronave(cod, desc, cap);
+//                Rota rotaFinal = new Rota(ciaAerea, aeroOrigem, aeroDestino, aero);
+//
+//                adicionar();
+//            }
+//        }
+//    }
 
     public ArrayList<Voo> buscarData(LocalDate data) {
        ArrayList<Voo> result = new ArrayList<>();
